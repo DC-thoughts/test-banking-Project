@@ -22,6 +22,9 @@ public class LoginPage {
 	@CacheLookup
 	WebElement txtUserName;
 	
+	@FindBy(xpath="id1")
+	WebElement id1;
+	
 	@FindBy(name="password")
 	@CacheLookup
 	WebElement txtPassword;
