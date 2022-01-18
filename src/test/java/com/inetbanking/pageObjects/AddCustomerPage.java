@@ -11,6 +11,7 @@ public class AddCustomerPage {
 
 	WebDriver ldriver;
 	
+	
 	public AddCustomerPage(WebDriver rdriver) {
 		ldriver=rdriver;
 		PageFactory.initElements(rdriver, this);
