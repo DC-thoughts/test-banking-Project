@@ -16,6 +16,8 @@ public class LoginPage {
 		PageFactory.initElements(rdriver, this);
 	}
 		
+	@FindBy(xpath="id")
+	WebElement id;
 	@FindBy(name="uid")
 	@CacheLookup
 	WebElement txtUserName;
