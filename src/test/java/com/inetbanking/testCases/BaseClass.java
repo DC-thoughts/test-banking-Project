@@ -8,6 +8,7 @@ import org.apache.commons.io.FileUtils;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.apache.log4j.Logger;
 import org.apache.log4j.PropertyConfigurator;
+import org.openqa.selenium.NoAlertPresentException;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebDriver;
@@ -42,6 +43,7 @@ public class BaseClass {
 		{
 			System.setProperty("webdriver.chrome.driver",readconfig.getChromePath());
 			driver=new ChromeDriver();
+		
 		}
 		else if(br.equals("firefox"))
 		{
@@ -56,6 +58,7 @@ public class BaseClass {
 		
 		driver.manage().timeouts().implicitlyWait(10,TimeUnit.SECONDS);
 		driver.get(baseURL);
+		driver.manage().window().maximize();
 	}
 	
 	@AfterClass
@@ -82,6 +85,18 @@ public class BaseClass {
 		String generatedString2 = RandomStringUtils.randomNumeric(4);
 		return (generatedString2);
 	}
-	
+	public boolean isAlertPresent() //user defined method created to check alert is present or not
+	{
+		try
+		{
+		driver.switchTo().alert();
+		return true;
+		}
+		catch(NoAlertPresentException e)
+		{
+			return false;
+		}
+		
+	}
 	
 }
